@@ -1,0 +1,13 @@
+numpy
+scipy
+pandas
+sympy
+nose
+ipython[all]
+jupyter
+keras
+tensorflow
+scikit-learn
+matplotlib
+seaborn
+bokeh
