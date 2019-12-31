@@ -6,6 +6,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
 
 USER root
 
+# issue found at: https://github.com/jupyter/docker-stacks/issues/815
+# other color schemes: https://askubuntu.com/questions/123268/changing-colors-for-user-host-directory-information-in-terminal-command-prompt
 # taken from: https://github.com/jupyter/docker-stacks/blob/master/base-notebook/Dockerfile
 # Enable prompt color in the skeleton .bashrc before creating the default a user 
 RUN sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' /etc/skel/.bashrc
@@ -39,3 +41,9 @@ RUN rm configure_install_opencv.sh
 ADD requirements.txt /home/${user}
 RUN sudo pip install --no-cache-dir -r requirements.txt
 RUN rm requirements.txt
+
+
+##REF
+# https://unix.stackexchange.com/questions/410579/change-the-python3-default-version-in-ubuntu
+# https://stackoverflow.com/questions/41986507/unable-to-set-default-python-version-to-python3-in-ubuntu
+# https://serverfault.com/questions/836846/host-mountpoint-inside-docker-volume-inconsistency
